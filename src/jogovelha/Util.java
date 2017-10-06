@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Util {
 
+    //Variáveis
     private int nJogadaPc = 0;
     private int nJogadaUsuario = 0;
     private final int[][] Jogo = new int[3][3];
