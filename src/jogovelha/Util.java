@@ -5,21 +5,23 @@ import java.util.Scanner;
 
 public class Util {
 
-    //Variáveis
+    //nº de jogadas que o computador realizou
     private int nJogadaPc = 0;
+    //nº de jogadas que o usuário realizou
     private int nJogadaUsuario = 0;
-    private final int[][] Jogo = new int[3][3];
+    //Tabuleiro do jogo
+    private int[][] Jogo = new int[3][3];
+    //Variáveis que determinam a jogada do PC
     private int linha = 0;
     private int coluna = 0;
-    private boolean vazia = false;
-    private int jogadaUsuarioLinha = 0;
-    private int jogadaUsuarioColuna = 0;
 
+    //Verifica que alguém venceu o jogo
     public boolean VerificarVencedor() {
 
         for (int i = 0; i < 3; i++) {
-            // verificar linhas
-            if (Jogo[i][0] == Jogo[i][1] && Jogo[i][2] == Jogo[i][0]) {
+            
+            //Verifica se tem 3 X ou 0 na linha
+            if (Jogo[i][0] == Jogo[i][1] && Jogo[i][2] == Jogo[i][0]) { // verificar linhas
                 if (Jogo[i][0] == 1) {
                     System.out.println("Parabéns, você venceu!");
                     return true;
@@ -29,8 +31,8 @@ public class Util {
                 }
             }
 
-            // verificar colunas
-            if (Jogo[0][i] == Jogo[1][i] && Jogo[2][i] == Jogo[0][i]) {
+            //Verifica se tem 3 X ou 0 na coluna
+            if (Jogo[0][i] == Jogo[1][i] && Jogo[2][i] == Jogo[0][i]) { // verificar colunas
                 if (Jogo[0][i] == 1) {
                     System.out.println("Parabéns, você venceu!");
                     return true;
@@ -39,9 +41,9 @@ public class Util {
                     return true;
                 }
             }
-        }
+        } //fim for
 
-        // verificar diagonal 1
+        // verificar se tem 3 X ou 0 diagonal 1
         if (Jogo[0][0] == Jogo[1][1] && Jogo[2][2] == Jogo[0][0]) {
             if (Jogo[0][0] == 1) {
                 System.out.println("Parabéns, você venceu!");
@@ -52,7 +54,7 @@ public class Util {
             }
         }
 
-        // verificar diagonal 2
+        // verificar se tem 3 X ou 0 diagonal 2
         if (Jogo[2][0] == Jogo[1][1] && Jogo[2][0] == Jogo[0][2]) {
             if (Jogo[2][0] == 1) {
                 System.out.println("Parabéns, você venceu!");
@@ -63,6 +65,7 @@ public class Util {
             }
         }
 
+        //Se já foram 9 jogadas deu velha
         if (nJogadaPc + nJogadaUsuario == 9) {
             System.out.println("Empate!");
             return true;
@@ -71,6 +74,7 @@ public class Util {
         }
     }
 
+    //Imprime o tabuleiro
     public void ImprimirJogo() {
         System.out.println("    1      2        3   ");
         System.out.println("1       |       |       ");
@@ -92,6 +96,7 @@ public class Util {
         System.out.println(" ");
     }
 
+    //Retorna X para 1 e 0 para 2
     private String RetornarValor(int valor) {
         if (valor == 1) {
             return "X";
@@ -102,11 +107,12 @@ public class Util {
         }
     }
 
+    //Solicita uma jogada do usuário 
     public void SocilitarJogada() {
         Scanner leia = new Scanner(System.in);
-        vazia = false;
-        jogadaUsuarioLinha = 0;
-        jogadaUsuarioColuna = 0;
+        boolean vazia = false;
+        int jogadaUsuarioLinha = 0;
+        int jogadaUsuarioColuna = 0;
 
         while (vazia == false) {
             while (jogadaUsuarioLinha < 1 || jogadaUsuarioLinha > 3) {
@@ -135,6 +141,7 @@ public class Util {
         }
     }
 
+    //Faz a jogada do PC
     public void JogadaPc() {
         boolean vencedor = false;
         if (nJogadaPc == 0) {
@@ -163,6 +170,7 @@ public class Util {
         }
     }
 
+    //Primeira jogada do PC
     private void PrimeiraJogada() {
         Random rd = new Random();
         int jogada = rd.nextInt(4);
@@ -202,6 +210,7 @@ public class Util {
         }
     }
 
+    //Segunda jogada do PC
     private void SegundaJogada() {
         Random rd = new Random();
         int jogada = rd.nextInt(3);
@@ -251,9 +260,18 @@ public class Util {
             } else if (Jogo[0][2] == 2) {
 
             }
+        } else {
+            if (Jogo[1][1] == 0) {
+                Jogo[1][1] = 2;
+            } else if (Jogo[0][0] == 0) {
+                Jogo[0][0] = 2;
+            } else if (Jogo[2][2] == 0) {
+                Jogo[2][2] = 2;
+            }
         }
     }
 
+    //Verifica se tem como ganhar ou evitar a derrota (linhas e colunas)
     private boolean VerificaJogadaFinal() {
         for (int i = 0; i < 3; i++) {
             //linhas
@@ -336,6 +354,7 @@ public class Util {
         }
     }
 
+    //Verifica se o usuário pode ganhar na diagonal
     private boolean VerificarDefesaDiagonais() {
 
         if (Jogo[0][0] == 1 && Jogo[1][1] == 1 && Jogo[2][2] == 0) {
@@ -365,6 +384,7 @@ public class Util {
         }
     }
 
+    //Verifica se o PC pode ganhar na diagonal
     private boolean VerificarAtaqueDiagonais() {
 
         if (Jogo[0][0] == 1 && Jogo[1][1] == 1 && Jogo[2][2] == 0) {

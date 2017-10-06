@@ -11,6 +11,7 @@ public class JogoVelha {
         Util util = new Util();
 
         do {
+            //Ler se quem começa é o usuário ou o PC
             System.out.println("Você é o X e eu sou a O. Quer começar? s/n");
             usuarioComeca = leia.next();
             usuarioComeca = usuarioComeca.toLowerCase();
@@ -19,8 +20,7 @@ public class JogoVelha {
         //Se o computador começar
         if (usuarioComeca.equals("n")) {
             util.JogadaPc();
-        } else { //Se o usuário perguntar
-            //Exibir tela inicial
+        } else { //Se o usuário começar
             util.ImprimirJogo();
             util.SocilitarJogada();
         }
