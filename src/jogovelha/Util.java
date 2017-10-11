@@ -84,7 +84,7 @@ public class Util {
         }
     }
 
-    //Imprime o tabuleiro
+    //Imprime o tabuleiro com as jogadas
     public void ImprimirJogo() {
         System.out.println("    1      2        3   ");
         System.out.println("1       |       |       ");
