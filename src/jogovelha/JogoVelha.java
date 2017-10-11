@@ -8,7 +8,7 @@ public class JogoVelha {
 
         String usuarioComeca;
         Scanner leia = new Scanner(System.in);
-        Util util = new Util();
+        Util util;
 
         do {
             //Ler se quem começa é o usuário ou o PC
@@ -17,12 +17,7 @@ public class JogoVelha {
             usuarioComeca = usuarioComeca.toLowerCase();
         } while (!usuarioComeca.equals("s") && !usuarioComeca.equals("n"));
 
-        //Se o computador começar
-        if (usuarioComeca.equals("n")) {
-            util.JogadaPc();
-        } else { //Se o usuário começar
-            util.ImprimirJogo();
-            util.SocilitarJogada();
-        }
+        //Iniciar o jogo
+        util = new Util(usuarioComeca);
     }
 }
