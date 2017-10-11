@@ -15,6 +15,7 @@ public class Util {
             SocilitarJogada();
         }
     }
+    
     //nº de jogadas que o computador realizou
     private int nJogadaPc = 0;
     //nº de jogadas que o usuário realizou
@@ -29,7 +30,6 @@ public class Util {
     public boolean VerificarVencedor() {
 
         for (int i = 0; i < 3; i++) {
-
             //Verifica se tem 3 X ou 0 na linha
             if (Jogo[i][0] == Jogo[i][1] && Jogo[i][2] == Jogo[i][0]) { // verificar linhas
                 if (Jogo[i][0] == 1) {
