@@ -140,6 +140,8 @@ public class Util {
             } else {
                 System.out.println("A posição " + jogadaUsuarioLinha + ", " + jogadaUsuarioColuna
                         + " já está ocupada, informe outra.");
+               
+                //Colocar valores inválidos para solicitar novos.
                 jogadaUsuarioColuna = 50;
                 jogadaUsuarioLinha = 50;
             }
